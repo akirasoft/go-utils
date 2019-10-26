@@ -1,8 +1,6 @@
 package events
 
 import (
-	"encoding/json"
-
 	"github.com/keptn/go-utils/pkg/models"
 )
 
@@ -131,17 +129,29 @@ type ConfigureMonitoringEventData struct {
 
 // EvaluationDoneEventData Keptn event payload for completed Pitometer evaluation Note: many elements are not strongly typed
 type EvaluationDoneEventData struct {
+	Project            string `json:"project"`
+	Teststrategy       string `json:"teststrategy"`
 	Deploymentstrategy string `json:"deploymentstrategy"`
-	Evaluationdetails  []struct {
-		Key string `json:"Key"`
-		// we need to parse this later as it could be a string or array
-		Value json.RawMessage `json:"Value"`
+	Stage              string `json:"stage"`
+	Service            string `json:"service"`
+	Evaluationpassed   bool   `json:"evaluationpassed"`
+	Evaluationdetails  struct {
+		Options struct {
+			TimeStart int `json:"timeStart"`
+			TimeEnd   int `json:"timeEnd"`
+		} `json:"options"`
+		TotalScore int `json:"totalScore"`
+		Objectives struct {
+			Pass    int `json:"pass"`
+			Warning int `json:"warning"`
+		} `json:"objectives"`
+		IndicatorResults []struct {
+			ID         string        `json:"id"`
+			Violations []interface{} `json:"violations"`
+			Score      int           `json:"score"`
+		} `json:"indicatorResults"`
+		Result string `json:"result"`
 	} `json:"evaluationdetails"`
-	Evaluationpassed bool   `json:"evaluationpassed"`
-	Project          string `json:"project"`
-	Service          string `json:"service"`
-	Stage            string `json:"stage"`
-	Teststrategy     string `json:"teststrategy"`
 }
 
 // DeploymentFinishedEventData Keptn event payload for completed deployment
