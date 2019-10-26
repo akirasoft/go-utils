@@ -1,6 +1,10 @@
 package events
 
-import "github.com/keptn/go-utils/pkg/models"
+import (
+	"encoding/json"
+
+	"github.com/keptn/go-utils/pkg/models"
+)
 
 // ServiceCreateEventType is a CloudEvent type for creating a new service
 const ServiceCreateEventType = "sh.keptn.event.service.create"
@@ -123,4 +127,28 @@ type ConfigureMonitoringEventData struct {
 	ServiceIndicators *models.ServiceIndicators `json:"serviceIndicators"`
 	ServiceObjectives *models.ServiceObjectives `json:"serviceObjectives"`
 	Remediation       *models.Remediations      `json:"remediation"`
+}
+
+// EvaluationDoneEventData Keptn event payload for completed Pitometer evaluation Note: many elements are not strongly typed
+type EvaluationDoneEventData struct {
+	Deploymentstrategy string `json:"deploymentstrategy"`
+	Evaluationdetails  []struct {
+		Key string `json:"Key"`
+		// we need to parse this later as it could be a string or array
+		Value json.RawMessage `json:"Value"`
+	} `json:"evaluationdetails"`
+	Evaluationpassed bool   `json:"evaluationpassed"`
+	Project          string `json:"project"`
+	Service          string `json:"service"`
+	Stage            string `json:"stage"`
+	Teststrategy     string `json:"teststrategy"`
+}
+
+// DeploymentFinishedEventData Keptn event payload for completed deployment
+type DeploymentFinishedEventData struct {
+	Deploymentstrategy string `json:"deploymentstrategy"`
+	Project            string `json:"project"`
+	Service            string `json:"service"`
+	Stage              string `json:"stage"`
+	Teststrategy       string `json:"teststrategy"`
 }

@@ -385,6 +385,14 @@
   version = "v1.1.7"
 
 [[projects]]
+  digest = "1:7d47c041128cf93bff5c16ec5ddf1192fcb726a74b9982d6732146d5aee462d6"
+  name = "github.com/keptn/go-utils"
+  packages = ["pkg/models"]
+  pruneopts = "UT"
+  revision = "f5c220b4f954e52994bad71cf9bac152a1706f78"
+  version = "0.2.1"
+
+[[projects]]
   digest = "1:fd7f169f32c221b096c74e756bda16fe22d3bb448bbf74042fd0700407a1f92f"
   name = "github.com/kevinburke/ssh_config"
   packages = ["."]
@@ -903,7 +911,7 @@
   version = "kubernetes-1.12.0"
 
 [[projects]]
-  digest = "1:93c14bd5adb4ad2cdce1a57fda1c648781c91999bfdb96db0768f631adc849f0"
+  digest = "1:c780ffd0ea11865bc3d1d5518525b59aa487750fd356b12c74d372c36fc16e74"
   name = "k8s.io/helm"
   packages = [
     "pkg/chartutil",
@@ -933,6 +941,7 @@
     "github.com/go-openapi/validate",
     "github.com/google/uuid",
     "github.com/gorilla/websocket",
+    "github.com/keptn/go-utils/pkg/models",
     "gopkg.in/src-d/go-git.v4",
     "gopkg.in/src-d/go-git.v4/config",
     "gopkg.in/src-d/go-git.v4/plumbing",
