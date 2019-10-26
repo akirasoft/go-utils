@@ -152,26 +152,3 @@ type DeploymentFinishedEventData struct {
 	Stage              string `json:"stage"`
 	Teststrategy       string `json:"teststrategy"`
 }
-
-// ConfigurationChanged Keptn event payload for changed configuration changed in 0.5.0
-// it appears ConfigurationChangeEventData does not work outside of core keptn?
-type ConfigurationChanged struct {
-	Canary []struct {
-		Key string `json:"Key"`
-		// all values not strongly typed
-		Value json.RawMessage `json:"Value"`
-	} `json:"canary,omitempty"`
-	ChannelInfo []struct {
-		Key string `json:"Key"`
-		// all values not strongly typed
-		Value json.RawMessage `json:"Value"`
-	} `json:"channelInfo,omitempty"`
-	Project      string `json:"project"`
-	Service      string `json:"service"`
-	Stage        string `json:"stage"`
-	ValuesCanary []struct {
-		Key string `json:"Key"`
-		// all values not strongly typed
-		Value json.RawMessage `json:"Value"`
-	} `json:"valuesCanary"`
-}

@@ -25,7 +25,7 @@ func KeptnEventHandler(ctx context.Context, event cloudevents.Event) error {
 	case "sh.keptn.event.configuration.change":
 		//log.Println("sh.keptn.events.configuration-changed")
 		// should be sh.keptn.events.configuration.change
-		data := &keptnevents.ConfigurationChanged{}
+		data := &keptnevents.ConfigurationChangeEventData{}
 		if err := event.DataAs(data); err != nil {
 			return err
 		}
